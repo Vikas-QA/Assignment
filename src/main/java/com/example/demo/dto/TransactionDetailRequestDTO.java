@@ -1,13 +1,13 @@
 package com.example.demo.dto;
 
 public class TransactionDetailRequestDTO {
-	
+
 	private int id;
-	
+
 	private String wallet_Id;
-	
+
 	private double total_balance;
-	
+
 	private String message;
 
 	public int getId() {
@@ -42,15 +42,11 @@ public class TransactionDetailRequestDTO {
 		this.message = message;
 	}
 
-	
-
 	@Override
 	public String toString() {
 		return "TransactionDetailRequestDTO [id=" + id + ", wallet_Id=" + wallet_Id + ", total_balance=" + total_balance
 				+ ", message=" + message + "]";
 	}
-
-	
 
 	public TransactionDetailRequestDTO(int id, String wallet_Id, double total_balance, String message) {
 		super();
@@ -63,7 +59,5 @@ public class TransactionDetailRequestDTO {
 	public TransactionDetailRequestDTO() {
 		super();
 	}
-	
-	
 
 }

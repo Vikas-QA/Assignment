@@ -43,7 +43,6 @@ public class WalletServiceImpl implements WalletService {
 			String walletId = user_emailId;
 			register.setWalletId(walletId);
 			walletRepo.save(register);
-//			return new RegistrationResponseDTO(register,"Successful");
 
 			return new RegistrationResponseDTO(register.getFirstName(), register.getLastName(), register.getEmailId(),
 					register.getMobileNo(), new RegistrationMessageDTO("success"));
@@ -84,37 +83,34 @@ public class WalletServiceImpl implements WalletService {
 	@Override
 	public TransferBalanceResponseDTO transfer_balance(TransferBalanceRequestDTO transferbalance) {
 
-	
-		
-		if(transferbalance.getSender_WalletId().trim().equals( transferbalance.getReceiver_WalletId().trim())) {
+		if (transferbalance.getSender_WalletId().trim().equals(transferbalance.getReceiver_WalletId().trim())) {
 			return new TransferBalanceResponseDTO("Wallet id can't be same", transferbalance.getAmount_Transfer(),
 					transferbalance.getSender_WalletId(), transferbalance.getReceiver_WalletId());
-		}
-		else {
-			
+		} else {
+
 			String sender_walletId = transferbalance.getSender_WalletId().trim();
 			String receiver_walletId = transferbalance.getReceiver_WalletId().trim();
-			
+
 			boolean s_registered_walletId_flag = registered_walletId_flag(sender_walletId);
 			boolean r_registered_walletId_flag = registered_walletId_flag(receiver_walletId);
-          if(s_registered_walletId_flag == false && r_registered_walletId_flag == false ) {
-				
+			if (s_registered_walletId_flag == false && r_registered_walletId_flag == false) {
+
 				return new TransferBalanceResponseDTO("Both wallet id are incorrect.",
 						transferbalance.getAmount_Transfer(), transferbalance.getSender_WalletId(),
 						transferbalance.getReceiver_WalletId());
 			}
-			
-          else if(s_registered_walletId_flag == false){
+
+			else if (s_registered_walletId_flag == false) {
 				return new TransferBalanceResponseDTO("Incorrect sender wallet id.",
 						transferbalance.getAmount_Transfer(), transferbalance.getSender_WalletId(),
 						transferbalance.getReceiver_WalletId());
-				
-			}else if(r_registered_walletId_flag == false){
+
+			} else if (r_registered_walletId_flag == false) {
 				return new TransferBalanceResponseDTO("Incorrect receiver wallet id.",
 						transferbalance.getAmount_Transfer(), transferbalance.getSender_WalletId(),
 						transferbalance.getReceiver_WalletId());
-			} 
-			
+			}
+
 			else {
 				double sender_balance = getBalanceByWalletId(transferbalance.getSender_WalletId().trim());
 				double amount_transfer = transferbalance.getAmount_Transfer();
@@ -124,28 +120,16 @@ public class WalletServiceImpl implements WalletService {
 							transferbalance.getAmount_Transfer(), transferbalance.getSender_WalletId(),
 							transferbalance.getReceiver_WalletId());
 				} else {
-					return new TransferBalanceResponseDTO("Low Balance can't send money", transferbalance.getAmount_Transfer(),
-							transferbalance.getSender_WalletId(), transferbalance.getReceiver_WalletId());
+					return new TransferBalanceResponseDTO("Low Balance can't send money",
+							transferbalance.getAmount_Transfer(), transferbalance.getSender_WalletId(),
+							transferbalance.getReceiver_WalletId());
 				}
 
 			}
-				
-			}
-			
-			
-			
-			
-		
-			
-			
-			
+
 		}
-		
-		
-		
-		
-		
-		
+
+	}
 
 	private void update_wallet_trasaction(TransferBalanceRequestDTO transferbalance) {
 		LocalDateTime date = LocalDateTime.now();

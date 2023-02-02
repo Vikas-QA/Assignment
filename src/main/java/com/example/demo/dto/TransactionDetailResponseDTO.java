@@ -1,9 +1,9 @@
 package com.example.demo.dto;
 
 public class TransactionDetailResponseDTO {
-	
+
 	private String wallet_Id;
-	
+
 	private String result;
 
 	public String getWallet_Id() {
@@ -36,8 +36,5 @@ public class TransactionDetailResponseDTO {
 	public TransactionDetailResponseDTO() {
 		super();
 	}
-
-
-	
 
 }

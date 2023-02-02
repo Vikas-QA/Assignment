@@ -121,7 +121,7 @@ public class TransactionDetailsEntity {
 		this.date_time = date_time;
 		this.transaction_Type = transaction_Type;
 		this.total_balance = total_balance;
-//		
+
 	}
 
 	public TransactionDetailsEntity() {

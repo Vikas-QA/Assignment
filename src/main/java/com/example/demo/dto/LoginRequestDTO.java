@@ -4,13 +4,13 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public class LoginRequestDTO {
-	
-	@NotNull(message="email can't be null")
-	@NotBlank(message="email can't be empty")
-	private String  emailId;
-	
-	@NotNull(message="password can't be null")
-	@NotBlank(message="password can't be empty")
+
+	@NotNull(message = "email can't be null")
+	@NotBlank(message = "email can't be empty")
+	private String emailId;
+
+	@NotNull(message = "password can't be null")
+	@NotBlank(message = "password can't be empty")
 	private String password;
 
 	public String getEmailId() {
@@ -43,7 +43,5 @@ public class LoginRequestDTO {
 	public LoginRequestDTO() {
 		super();
 	}
-	
-	
 
 }

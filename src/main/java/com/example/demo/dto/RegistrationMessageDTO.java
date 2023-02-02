@@ -25,5 +25,5 @@ public class RegistrationMessageDTO {
 	public RegistrationMessageDTO() {
 		super();
 	}
-	
+
 }
